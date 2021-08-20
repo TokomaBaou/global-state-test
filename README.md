@@ -1,2 +1,2 @@
-# global-state-test
+# atom-test
 Created with CodeSandbox
