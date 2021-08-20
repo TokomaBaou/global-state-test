@@ -2,7 +2,7 @@ import "./styles.css";
 import React from "react";
 import { Router } from "./router/Router";
 import { UserProvider } from "./providers/UserProvider";
-
+import { RecoilRoot } from "recoil";
 //ユーザーのデータを作成
 const user = {
   name: "マッカート",
@@ -17,8 +17,10 @@ const user = {
 
 export default function App() {
   return (
-  <UserProvider>
-  <Router />;
-  </UserProvider>
+    <RecoilRoot>
+      <UserProvider>
+        <Router />;
+      </UserProvider>
+    </RecoilRoot>
   );
 }

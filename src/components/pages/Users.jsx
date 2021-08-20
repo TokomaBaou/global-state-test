@@ -1,11 +1,12 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
 /*0-9の値を持った配列を生成。mapでループして、*/
-import React ,{useContext} from"react";
-import {UserContext} from "../../providers/UserProvider"; 
+import React from "react";
+// import {UserContext} from "../../providers/UserProvider";
 import { SecondaryButton } from "../atoms/button/SecondaryButton";
-
+import { useRecoilState } from "recoil";
+import { userState } from "../../store/userState";
 
 const users = [...Array(10).keys()].map((val) => {
   return {
@@ -34,12 +35,12 @@ const users = [...Array(10).keys()].map((val) => {
 // };
 
 export const Users = () => {
- //レンダリング確認
- const {userInfo,setUserInfo} = useContext(UserContext);
+  //レンダリング確認
+  //  const {userInfo,setUserInfo} = useContext(UserContext);
+  const [userInfo, setUserInfo] = useRecoilState(userState);
 
- const onClickSwitch = () => setUserInfo({ isAdmin: !userInfo.isAdmin })
-  
-  
+  const onClickSwitch = () => setUserInfo({ isAdmin: !userInfo.isAdmin });
+
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
