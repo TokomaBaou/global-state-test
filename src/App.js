@@ -1,6 +1,7 @@
 import "./styles.css";
-
+import React from "react";
 import { Router } from "./router/Router";
+import { UserProvider } from "./providers/UserProvider";
 
 //ユーザーのデータを作成
 const user = {
@@ -15,5 +16,9 @@ const user = {
 };
 
 export default function App() {
-  return <Router />;
+  return (
+  <UserProvider>
+  <Router />;
+  </UserProvider>
+  );
 }
