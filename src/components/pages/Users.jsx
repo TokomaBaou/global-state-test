@@ -2,6 +2,10 @@ import styled, { keyframes } from "styled-components";
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
 /*0-9の値を持った配列を生成。mapでループして、*/
+import React ,{useContext} from"react";
+import {UserContext} from "../../providers/UserProvider"; 
+import { SecondaryButton } from "../atoms/button/SecondaryButton";
+
 
 const users = [...Array(10).keys()].map((val) => {
   return {
@@ -30,10 +34,18 @@ const users = [...Array(10).keys()].map((val) => {
 // };
 
 export const Users = () => {
+ //レンダリング確認
+ const {userInfo,setUserInfo} = useContext(UserContext);
+
+ const onClickSwitch = () => setUserInfo({ isAdmin: !userInfo.isAdmin })
+  
+  
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SearchInput />
+      <br />
+      <SecondaryButton onClick={onClickSwitch}>切り替え</SecondaryButton>
       <SUserArea>
         {users.map((user) => (
           <UserCard key={user.id} user={user} />

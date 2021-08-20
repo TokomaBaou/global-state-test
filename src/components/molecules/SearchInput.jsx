@@ -1,9 +1,9 @@
 import styled from "styled-components";
-
+import React, { memo } from "react";
 import { PrimaryButton } from "../atoms/button/PrimaryButton";
 import { Input } from "../atoms/input/Input";
 
-export const SearchInput = () => {
+export const SearchInput = memo(() => {
   return (
     <SContainer>
       <Input placeholder="検索条件を入力" />
@@ -12,7 +12,7 @@ export const SearchInput = () => {
       </SButtonWrapper>
     </SContainer>
   );
-};
+});
 
 //検索入力ボタンに枠を追加して余白など設定したい
 const SButtonWrapper = styled.div`
